@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card my-5">
+                <div class="card-header bg-primary text-white text-center h4">Register</div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        {{ form.csrf_token }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ render_field(form.name, class="form-control", placeholder="Full Name")}}
+                                {{ render_field(form.username, class="form-control", placeholder="Username")}}
+                                {{ render_field(form.email, class="form-control", placeholder="Email")}}
+                                {{ render_field(form.password, class="form-control", placeholder="Password")}}
+                                {{ render_field(form.confirm, class="form-control", placeholder="Confirm Password")}}
+                                {{ form.profile(class="form-control") }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_field(form.country, class="form-control", placeholder="Country")}}
+                                {{ render_field(form.city, class="form-control", placeholder="City")}}
+                                {{ render_field(form.contact, class="form-control", placeholder="Contact")}}
+                                {{ render_field(form.address, class="form-control", placeholder="Address")}}
+                                {{ render_field(form.zipcode, class="form-control", placeholder="Zip Code")}}
+                                <button type="submit" class="btn btn-primary mt-4 float-right">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

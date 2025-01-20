@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card my-5">
+                <div class="card-header bg-primary text-white text-center h4">
+                    {% if getproduct %} Update Product {% else %} Add a Product {% endif %}
+                </div>
+                <div class="card-body">
+                    {% include '_messages.html' %}
+                    <form method="post" enctype="multipart/form-data">
+                        {{ form.csrf_token }}
+                        <div class="form-group">
+                            {{ render_field(form.name, class="form-control", placeholder="Product Name") }}
+                        </div>
+                        <div class="form-group">
+                            {{ render_field(form.price, class="form-control", placeholder="Price") }}
+                        </div>
+                        <div class="form-group">
+                            {{ render_field(form.discount, class="form-control", placeholder="Discount") }}
+                        </div>
+                        <div class="form-group">
+                            {{ render_field(form.stock, class="form-control", placeholder="Stock") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="brand">Brand</label>
+                            {{ render_field(form.brand, class="form-control", id="brand") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            {{ render_field(form.category, class="form-control", id="category") }}
+                        </div>
+                        <div class="form-group">
+                            {{ render_field(form.colors, class="form-control", placeholder="Colors") }}
+                        </div>
+                        <div class="form-group">
+                            {{ render_field(form.description, class="form-control", placeholder="Description", rows="10") }}
+                        </div>
+                        <div class="form-group">
+                            {{ render_field(form.image_1, class="form-control-file") }}
+                            {{ render_field(form.image_2, class="form-control-file") }}
+                            {{ render_field(form.image_3, class="form-control-file") }}
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-primary">
+                                {% if getproduct %} Update {% else %} Add {% endif %} Product
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

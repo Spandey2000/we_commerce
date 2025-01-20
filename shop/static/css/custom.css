@@ -1,0 +1,152 @@
+/* Custom Styles */
+
+/* Color Scheme */
+:root {
+    --primary-color: #5e72e4; /* Primary color for your brand */
+    --secondary-color: #f4f5f7; /* Secondary color for backgrounds */
+    --accent-color: #11cdef; /* Accent color for buttons and links */
+    --text-color: #32325d; /* Main text color */
+    --heading-color: #32325d; /* Heading text color */
+  }
+  
+  /* Typography */
+  body {
+    font-family: 'Open Sans', sans-serif; /* A more modern font */
+    color: var(--text-color);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600; /* Slightly bolder headings */
+    color: var(--heading-color);
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+    border-color: darken(var(--primary-color), 10%);
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    color: var(--primary-color);
+  }
+  
+  .navbar-brand:hover {
+    color: darken(var(--primary-color), 10%);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: var(--secondary-color);
+    padding: 2rem 0;
+    color: var(--gray-dark);
+  }
+  
+  /* Cards */
+  .card {
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+  }
+  
+  .card-header {
+    background-color: var(--secondary-color);
+    border-bottom: none;
+  }
+  
+  /* Forms */
+  .form-control {
+    border: 1px solid #e9ecef;
+    border-radius: 0.375rem;
+  }
+  
+  .form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(17, 205, 239, 0.25);
+  }
+  
+  /* Utility Classes */
+  .bg-primary {
+    background-color: var(--primary-color) !important;
+  }
+  
+  .text-primary {
+    color: var(--primary-color) !important;
+  }
+  
+  /* Add more custom styles as needed... */
+  
+  /* Additional styles for layout and components */
+  .container, .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  /* Custom styles for header */
+  .header {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 0;
+  }
+  
+  /* Custom styles for product listings */
+  .product-item {
+    margin-bottom: 30px;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .product-title {
+    font-size: 1.2em;
+    color: var(--text-color);
+    margin-top: 15px;
+  }
+  
+  .product-price {
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  /* Custom styles for admin dashboard */
+  .dashboard {
+    background: var(--secondary-color);
+    padding: 20px;
+  }
+  
+  .dashboard-header {
+    font-size: 1.5em;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-stats {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 10px;
+    }
+  
+    .header {
+      padding: 5px 0;
+    }
+  }
+  
+  /* You can continue adding custom styles for other components as needed */
+  

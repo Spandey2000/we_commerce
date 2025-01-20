@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container mt-4">
+    {% include '_messages.html' %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Order Details
+                </div>
+                <div class="card-body">
+                    <p>Invoice: {{ orders.invoice }}</p>
+                    <p>Status: {{ orders.status }}</p>
+                    <p>Customer name: {{ customer.name }}</p>
+                    <p>Customer email: {{ customer.email }}</p>
+                    <p>Customer contact: {{ customer.contact }}</p>
+                    <table class="table table-sm table-striped">
+                        <thead class="bg-secondary text-white">
+                            <th>Sr</th>
+                            <th>Name</th>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Discount</th>
+                            <th>Subtotal</th>
+                        </thead>
+                        <tbody>
+                            {% for key, product in orders.orders.items() %}
+                            {% set discount = (product.discount/100) * product.price|float %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.color|capitalize }}</td>
+                                <td>${{ "%.2f"|format(product.price) }}</td>
+                                <td>{{ product.quantity }}</td>
+                                {% if product.discount %}
+                                <td>{{ product.discount }} % &nbsp; &nbsp; is ${{ "%.2f"|format(discount) }}</td>
+                                {% else %}
+                                <td></td>
+                                {% endif %}
+                                {% set subtotal = product.quantity|int * product.price|float %}
+                                <td>${{ "%.2f"|format(subtotal - discount|round(1,'floor')) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <p><strong>Tax:</strong> ${{ tax }}</p>
+                        <p><strong>Grand total:</strong> ${{ grandTotal }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        {% if orders.status != 'Paid' %}
+                        <form action="{{url_for('payment')}}" method="POST">
+                            {% set amount = grandTotal.replace('.','') %}
+                            <input type="hidden" name="amount" value="{{ amount }}">
+                            <input type="hidden" name="invoice" value="{{ orders.invoice }}">
+                            <button type="submit" class="btn btn-accent">Pay with Stripe</button>
+                        </form>
+                        {% endif %}
+                        <form action="{{url_for('get_pdf', invoice=orders.invoice)}}" method="post">
+                            <button type="submit" class="btn btn-info">Get PDF</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
